@@ -36,11 +36,11 @@ public class PaymentService implements IPaymentService {
             .amount(monthlyAmount.doubleValue())
             .paymentNumber(i + 1)
             .paymentDate(startDate.plusWeeks(i)).build()).collect(Collectors.toList());
-    requestEntity.setPaymentResponses(new ArrayList<>());
-    requestEntity.getPaymentResponses().addAll(response.stream().map(item -> PaymentResponseEntity
+    requestEntity.setPaymentResponses(response.stream().map(item -> PaymentResponseEntity
         .builder().paymentNumber(item.getPaymentNumber())
         .amount(item.getAmount())
-        .paymentDate(item.getPaymentDate()).build()).collect(Collectors.toList()));
+        .paymentDate(item.getPaymentDate())
+        .paymentRequest(requestEntity).build()).collect(Collectors.toList()));
     repository.save(requestEntity);
     return response;
   }

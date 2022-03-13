@@ -19,7 +19,6 @@ public class PaymentRequestEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "payment_request_id")
   private int id;
   private double amount;
   private int terms;

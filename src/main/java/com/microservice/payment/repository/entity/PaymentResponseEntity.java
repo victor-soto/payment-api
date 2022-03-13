@@ -20,7 +20,7 @@ public class PaymentResponseEntity {
   private double amount;
   private LocalDate paymentDate;
 
-  @JoinColumn(name = "payment_request_id", updatable = false)
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "payment_request_id", updatable = false, nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
   private PaymentRequestEntity paymentRequest;
 }
